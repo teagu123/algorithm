@@ -1,30 +1,22 @@
-function solution(a, b) {
-	let result = []
-
-	//비기는거 처리하고 A만 처리하고 나머지는 자동적으로 B
-	for (let i = 0; i < a.length; i++) {
-		if (a[i] === b[i]) {
-			result.push('D')
-		} else if (a[i] === 1 && b[i] === 3) {
-			result.push('A')
-		} else if (a[i] === 2 && b[i] === 1) {
-			result.push('A')
-		} else if (a[i] === 3 && b[i] === 2) {
-			result.push('A')
+function solution(arr1, arr2) {
+	let arrLen = arr1.length
+	let resultArr = []
+	for (let i = 0; i < arrLen; i++) {
+		if (
+			(arr1[i] === 1 && arr2[i] === 3) ||
+			(arr1[i] === 2 && arr2[i] === 1) ||
+			(arr1[i] === 3 && arr2[i] === 2)
+		) {
+			resultArr.push('A')
+		} else if (arr1[i] === arr2[i]) {
+			resultArr.push('D')
 		} else {
-			result.push('B')
+			resultArr.push('B')
 		}
 	}
-
-	return result
+	return resultArr
 }
+
 let a = [2, 3, 3, 1, 3]
 let b = [1, 1, 2, 2, 3]
-
 console.log(solution(a, b))
-
-// function solution(a) {
-// 	return 'test'
-// }
-
-// console.log(solution())

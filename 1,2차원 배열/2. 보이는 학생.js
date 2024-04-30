@@ -1,18 +1,12 @@
 function solution(arr) {
-	//첫시작을 가장 처음 친구
-	let maxLength = arr[0]
-	let count = 0
+	let cnt = 0
 
-	for (let i = 1; i < arr.length; i++) {
-		if (arr[i] <= maxLength) {
-			count++
-		} else {
-			maxLength = arr[i]
-		}
+	for (let i = 0; i < arr.length - 1; i++) {
+		if (arr[i] < arr[i + 1]) cnt++
 	}
 
-	return arr.length - count
+	return cnt
 }
-let arr = [130, 135, 148, 140, 145, 150, 150, 150]
 
+let arr = [130, 135, 148, 140, 145, 150, 150, 153]
 console.log(solution(arr))
