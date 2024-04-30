@@ -1,15 +1,17 @@
-function solution(arr) {
+function solution(arr1) {
+	let cnt = 0
 	let count = 0
-	let result = 0
-	for (let x of arr) {
-		if (x === 1) {
-			count++
-			result += count
+	for (a of arr1) {
+		console.log(a)
+		if (a === 1) {
+			cnt++
+			count += cnt
 		} else {
-			count = 0
+			cnt = 0
 		}
 	}
-	return result
+	return count
 }
-let arr = [1, 0, 1, 1, 1, 0, 0, 1, 1, 0]
-console.log(solution(arr))
+
+let a = [1, 0, 1, 1, 1, 0, 0, 1, 1, 0]
+console.log(solution(a))

@@ -1,29 +1,29 @@
 function solution(arr) {
-	let max = 0
-	let result = 0
-	let sum1 = 0
-	let sum2 = 0
-
+	let maxVal = 0
+	let addArr1 = 0
+	let addArr2 = 0
 	for (let i = 0; i < arr.length; i++) {
-		sum1 = sum2 = 0
-		for (let j = 0; j < arr.length; j++) {
-			sum1 += arr[i][j]
-			sum2 += arr[j][i]
+		//가로, 세로
+		let sum1 = 0
+		let sum2 = 0
+		for (let j = 0; j < arr[i].length; j++) {
+			addArr1 += arr[i][j]
+			addArr2 += arr[j][i]
 		}
+		maxVal = Math.max(sum1, sum2, maxVal)
 
-		result = Math.max(sum1, sum2)
+		//대각선
+		sum1 = 0
+		sum2 = 0
+
+		for (let i = 0; i < arr.length; i++) {
+			sum1 += arr[i][i]
+			sum2 += arr[i][arr.length - i - 1]
+		}
+		maxVal = Math.max(maxVal, sum1, sum2)
 	}
-
-	sum1 = sum2 = 0
-	for (let i = 0; i < arr.length; i++) {
-		sum1 += arr[i][i]
-		sum2 += arr[i][arr.length - i - 1]
-	}
-	result = Math.max(sum1, sum2)
-
-	return result
+	console.log(maxVal)
 }
-
 let arr = [
 	[10, 13, 10, 12, 15],
 	[12, 39, 30, 23, 11],
