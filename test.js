@@ -1,26 +1,29 @@
-function solution(a, arr) {
-	let arrLength = arr.length
-
-	let lp = 0
-	let cnt = 0
-	let total = 0
-
-	for (let rp = 0; rp < arrLength; rp++) {
-		total += arr[rp]
-		if (total === a) {
-			cnt++
-			console.log(arr[rp])
-		}
-		while (total > a) {
-			total -= arr[lp--]
-			if (total === a) {
-				cnt++
-				lp = 0
-			}
+function isPrime(num) {
+	let count = 0
+	for (let a = 2; a < num; a++) {
+		if (num % a === 0) {
+			count++
 		}
 	}
-	return cnt
+	return count === 0 ? true : false
 }
 
-let a = [1, 2, 1, 3, 1, 1, 1, 2]
-console.log(solution(6, a))
+function test(arr) {
+	let answer = []
+
+	for (let a of arr) {
+		let total = 0
+		while (a) {
+			let t = a % 10
+			total = total * 10 + t
+			a = parseInt(a / 10)
+		}
+		if (isPrime(a) === true) {
+			answer.push(a)
+		}
+	}
+	console.log(answer)
+}
+let arr = [32, 55, 62, 20, 250, 370, 200, 30, 100]
+
+console.log(test(arr))
