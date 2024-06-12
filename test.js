@@ -5,6 +5,7 @@ function isPrime(num) {
 			count++
 		}
 	}
+	//
 	return count === 0 ? true : false
 }
 
