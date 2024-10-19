@@ -1,6 +1,7 @@
-function solution(num_list) {
-	return num_list.length <= 10
-		? num_list.reduce((acc, crr) => acc * crr)
-		: num_list.reduce((acc, crr) => acc + crr, 0)
+function solution(arr, idx) {
+	const sum = arr.reduce((prev, next) => prev + next)
+	if (sum >= idx) {
+		arr.findIndex('1') >= n ? arr.findIndex(1) : -1
+	}
 }
-console.log(solution([2, 3, 4, 5]))
+console.log(solution([0, 0, 0, 1], 1))
