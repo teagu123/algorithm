@@ -3,4 +3,3 @@ function solution(num_list) {
 		? num_list.reduce((acc, crr) => acc * crr)
 		: num_list.reduce((acc, crr) => acc + crr, 0)
 }
-console.log(solution([2, 3, 4, 5]))
