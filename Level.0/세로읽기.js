@@ -10,4 +10,3 @@ function solution(my_string, m, c) {
 	}
 	return arr
 }
-console.log(solution('ihrhbakrfpndopljhygc', 4, 2))
