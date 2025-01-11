@@ -14,3 +14,28 @@ function solution(N, stages) {
 	total.forEach(el => answer.push(Number(el[0])))
 	return answer
 }
+
+//다시 풀었을때 효율 상승
+function solution(n, arr) {
+	let arrLength = arr.length
+
+	let answer = {}
+	for (let stage = 1; stage <= n; stage++) {
+		let count = 0
+		for (let i = 0; i < arr.length; i++) {
+			if (arr[i] === stage) {
+				count++
+			}
+		}
+
+		answer[stage] = count / arrLength
+
+		arrLength -= count
+	}
+
+	const sortArr = Object.entries(answer).sort(
+		([, value], [, value1]) => value1 - value,
+	)
+	return sortArr.map(el => Number(el[0]))
+}
+console.log(solution(5, [2, 1, 2, 6, 2, 4, 3, 3]))
