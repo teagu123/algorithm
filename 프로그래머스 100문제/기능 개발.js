@@ -18,6 +18,7 @@ function solution(progresses, speeds) {
 			count = 1
 		}
 	}
+
 	result.push(count)
 
 	return result

@@ -1,30 +1,12 @@
-function isPrime(num) {
-	let count = 0
-	for (let a = 2; a < num; a++) {
-		if (num % a === 0) {
-			count++
+function solution(arr) {
+	const answer = [arr[0]]
+	for (let i = 1; i < arr.length; i++) {
+		if (answer[0] < arr[i]) {
+			answer.unshift(arr[i])
 		}
 	}
-	//
-	return count === 0 ? true : false
+
+	return answer
 }
 
-function test(arr) {
-	let answer = []
-
-	for (let a of arr) {
-		let total = 0
-		while (a) {
-			let t = a % 10
-			total = total * 10 + t
-			a = parseInt(a / 10)
-		}
-		if (isPrime(a) === true) {
-			answer.push(a)
-		}
-	}
-	console.log(answer)
-}
-let arr = [32, 55, 62, 20, 250, 370, 200, 30, 100]
-
-console.log(test(arr))
+console.log(solution([130, 135, 148, 140, 145, 150, 150, 153, 154]))
