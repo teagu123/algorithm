@@ -31,24 +31,47 @@ function solution(genres, plays) {
 }
 
 //다시 풀이
-function solution(record) {
-	let answer = []
-	let people = {}
+function solution(genres, plays) {
+	// 1번째. 장르별 정렬
 
-	for (let el of record) {
-		const [cmd, id, name] = el.split(' ')
-		if (cmd !== 'Leave') {
-			people[id] = name
-		}
+	let data = {}
+	let listData = {}
+	let list = []
+	let answer = []
+
+	for (let i = 0; i < genres.length; i++) {
+		data[genres[i]]
+			? (data[genres[i]] += plays[i])
+			: (data[genres[i]] = plays[i])
+		listData[genres[i]]
+			? (listData[genres[i]] += ',' + i + ' ' + plays[i])
+			: (listData[genres[i]] = String(i + ' ' + plays[i]))
 	}
 
-	for (let el of record) {
-		const [cmd, id, name] = el.split(' ')
-		if (cmd === 'Enter') {
-			answer.push(people[id] + '님이 들어왔습니다.')
-		} else if (cmd === 'Leave') {
-			answer.push(people[id] + '님이 나갔습니다.')
+	for (let i in data) {
+		list.push([i, data[i]])
+	}
+
+	const sortList = list.sort((a, b) => b[1] - a[1]).map(el => el[0])
+
+	for (let i of sortList) {
+		let arr = []
+		const splitArr = listData[i].split(',')
+
+		if (splitArr.length === 1) {
+			answer.push(Number(splitArr[0].split(' ')[0]))
+			continue
 		}
+
+		const mapSplitArr = splitArr
+			.map(el => el.split(' '))
+			.sort((a, b) => Number(b[1]) - Number(a[1]))
+		// for(let j =0;j<mapSplitArr.length;j+=2){
+		//     if(!mapSplitArr[j+1]) break
+		//     answer.push(...[Number(mapSplitArr[j][0]), Number(mapSplitArr[j+1][0])])
+		// }
+
+		answer.push(...[Number(mapSplitArr[0][0]), Number(mapSplitArr[1][0])])
 	}
 
 	return answer
