@@ -29,3 +29,27 @@ function solution(genres, plays) {
 	}
 	return answer
 }
+
+//다시 풀이
+function solution(record) {
+	let answer = []
+	let people = {}
+
+	for (let el of record) {
+		const [cmd, id, name] = el.split(' ')
+		if (cmd !== 'Leave') {
+			people[id] = name
+		}
+	}
+
+	for (let el of record) {
+		const [cmd, id, name] = el.split(' ')
+		if (cmd === 'Enter') {
+			answer.push(people[id] + '님이 들어왔습니다.')
+		} else if (cmd === 'Leave') {
+			answer.push(people[id] + '님이 나갔습니다.')
+		}
+	}
+
+	return answer
+}
