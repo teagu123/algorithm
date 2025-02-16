@@ -1,34 +1,44 @@
-function solution(arr) {
-	const length = arr.length
-	const dx = [-1, 0, 1, 0]
-	const dy = [0, 1, 0, -1]
+function solution(arr, m) {
+	let nodeArr = Array.from({ length: m + 1 }, () => [])
+	let checkList = Array.from({ length: m + 1 }, () => 0)
 	let answer = 0
 
-	const DFS = (x, y) => {
-		if (x === length - 1 && y === length - 1) {
+	for (let [a, b] of arr) {
+		nodeArr[a].push(b)
+	}
+
+	const DFS = level => {
+		if (level === 5) {
 			answer++
 		} else {
-			for (let i = 0; i < 4; i++) {
-				let nx = x + dx[i]
-				let ny = y + dy[i]
-				if (
-					nx >= 0 &&
-					ny >= 0 &&
-					nx < length &&
-					ny < length &&
-					arr[nx][ny] === 0
-				) {
-					arr[nx][ny] = 1
-					DFS(nx, ny)
-					arr[nx][ny] = 0
+			for (let i = 0; i < m; i++) {
+				if (checkList[nodeArr[level][i]] === 0) {
+					checkList[nodeArr[level][i]] = 1
+					DFS(nodeArr[level][i])
+					checkList[nodeArr[level][i]] = 0
 				}
 			}
 		}
 	}
 
-	arr[0][0] = 1
-	DFS(0, 0)
-	// [가로][세로]
+	checkList[1] = 1
+	DFS(1)
 
-	return answer
+	console.log(answer)
 }
+console.log(
+	solution(
+		[
+			[1, 2],
+			[1, 3],
+			[1, 4],
+			[2, 1],
+			[2, 3],
+			[2, 5],
+			[3, 4],
+			[4, 2],
+			[4, 5],
+		],
+		5,
+	),
+)
