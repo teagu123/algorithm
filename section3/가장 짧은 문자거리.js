@@ -27,3 +27,39 @@ function solution(str, point) {
 
 	return answer
 }
+
+//새로 한거
+function solution(str, s) {
+	const L = str.length
+	let answer = []
+	for (let i = 0; i < L; i++) {
+		console.log('i', i)
+		let min = 101
+
+		if (str[i] === s) {
+			answer.push(0)
+			continue
+		}
+
+		for (let pr = i; pr >= 0; pr--) {
+			if (str[pr] === s) {
+				min = Math.min(min, i - pr)
+				console.log('min1', min)
+
+				break
+			}
+		}
+		for (let nx = i; nx < L; nx++) {
+			if (str[nx] === s) {
+				min = Math.min(min, nx - i)
+				break
+			}
+		}
+
+		answer.push(min)
+		console.log(answer)
+	}
+
+	return answer
+}
+console.log(solution('teachermode', 'e'))
