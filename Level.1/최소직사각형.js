@@ -16,3 +16,19 @@ function solution(sizes) {
 	const sec = sizes.map(el => el[1])
 	return Math.max(...fir) * Math.max(...sec)
 }
+
+function solution(sizes) {
+	const sortArr = sizes.map(el => el.sort((a, b) => b - a))
+
+	let a = 0
+	let b = 0
+
+	for (let i of sortArr) {
+		const [fir, sec] = i
+
+		a = Math.max(a, fir)
+		b = Math.max(b, sec)
+	}
+
+	return a * b
+}
