@@ -18,3 +18,14 @@ console.log(
 		],
 	),
 )
+
+function solution(array, commands) {
+	const answer = []
+
+	for (let [start, end, num] of commands) {
+		const target = array.slice(start - 1, end).sort((a, b) => a - b)[num - 1]
+		answer.push(target)
+	}
+
+	return answer
+}
