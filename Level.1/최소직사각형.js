@@ -32,3 +32,16 @@ function solution(sizes) {
 
 	return a * b
 }
+
+function solution(sizes) {
+	sizes = sizes.map(el => el.sort((a, b) => b - a))
+
+	const size = [0, 0]
+
+	for (let [x, y] of sizes) {
+		size[0] = Math.max(x, size[0])
+		size[1] = Math.max(y, size[1])
+	}
+
+	return size[0] * size[1]
+}
