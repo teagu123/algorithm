@@ -39,7 +39,5 @@ function solution(number, k) {
 		stack.push(el)
 	}
 
-	stack.splice(stack.length - k, k)
-
-	return stack.join('')
+	return stack.slice(stack.length - k, k).join('')
 }
