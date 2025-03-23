@@ -34,4 +34,24 @@ function solution(people, limit) {
 	return count
 }
 
+function solution(people, limit) {
+	people.sort((a, b) => a - b)
+
+	let cnt = 0
+
+	while (people.length > 0) {
+		const L = people.length
+
+		if (L > 1 && people[0] + people[L - 1] <= limit) {
+			people.shift()
+			people.pop()
+		} else {
+			people.pop()
+		}
+		cnt++
+	}
+
+	return cnt
+}
+
 console.log(solution([70, 50, 80, 50, 20], 100))
