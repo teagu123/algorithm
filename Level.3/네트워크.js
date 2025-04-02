@@ -1,6 +1,7 @@
 function solution(n, computers) {
 	const visit = Array.from({ length: n }, () => 0)
 	let cnt = 0
+    let max = 10000
 
 	const dfs = level => {
 		visit[level] = 1
