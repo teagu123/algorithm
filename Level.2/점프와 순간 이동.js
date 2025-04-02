@@ -1,18 +1,20 @@
 function solution(n) {
-	let count = 1
+	// 앞으로 전진은 건전지 사용량 +1
+	// 순간이동 *2 는 건전지 사용량 제로
+
+	let cnt = 1
 
 	while (n !== 1) {
-		if (n % 2 === 0) {
-			n = n / 2
-		}
-		if (n === 1) {
-			break
-			return count
-		}
 		if (n % 2 === 1) {
-			count += 1
-			n -= 1
+			n--
+			cnt++
+			continue
+		}
+		if (n % 2 === 0) {
+			n /= 2
+			continue
 		}
 	}
-	return count
+
+	return cnt
 }
