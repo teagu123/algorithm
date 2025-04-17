@@ -1,4 +1,5 @@
 function solution(n, k) {
+	//소수 판별 Fn isPrime 그리고 최적화를 위해 Math.sqrt를 사용
 	function isPrime(num) {
 		if (num < 2) return false
 

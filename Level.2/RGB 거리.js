@@ -4,6 +4,7 @@ function solution(n, inputs) {
 	const green = []
 	const blue = []
 
+	// 빨강, 초록, 파랑 배열 설정
 	for (const input of inputs) {
 		const [r, g, b] = input
 		red.push(r)
@@ -18,6 +19,7 @@ function solution(n, inputs) {
 		dp[i][1] = Math.min(dp[i - 1][0], dp[i - 1][2]) + green[i]
 		dp[i][2] = Math.min(dp[i - 1][0], dp[i - 1][1]) + blue[i]
 	}
+	console.log(dp)
 
 	return console.log(Math.min(...dp[n - 1]))
 }
